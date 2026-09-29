@@ -5,7 +5,7 @@ export const CONTACT_EMAIL = "hello@kigalifashionfestival.com";
 export const SOCIAL = {
   instagram: "https://www.instagram.com/kiffkigali/",
   facebook: "https://www.facebook.com/share/1LSCgown8G/",
-  tiktok: "https://www.tiktok.com/@kigali.intl.fashio",
+  // TikTok: add back once the account handle is confirmed.
   hashtag: "https://www.instagram.com/explore/tags/kiff2027/",
 } as const;
 

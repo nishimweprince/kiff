@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SOCIAL } from "@/lib/config";
+import { CONTACT_EMAIL, SOCIAL } from "@/lib/config";
 import { Brand1819 } from "./Brand1819";
-import { Facebook, Instagram, TikTok } from "./icons";
+import { Facebook, Instagram } from "./icons";
 
 const socials = [
   { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram },
   { href: SOCIAL.facebook, label: "Facebook", Icon: Facebook },
-  { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTok },
 ];
 
 export function Footer() {
@@ -39,7 +38,7 @@ export function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener"
-                aria-label={`KIFF on ${label}`}
+                aria-label={`KIFF on ${label} (opens in a new tab)`}
                 className="grid size-10 place-items-center text-gold transition-colors hover:text-gold-soft"
               >
                 <Icon size={22} />
@@ -49,9 +48,17 @@ export function Footer() {
         </ul>
       </div>
       <div className="border-t border-white/10">
-        <p className="caps-sm mx-auto max-w-[1320px] px-5 py-5 text-white/55 sm:px-8 lg:px-12">
-          Presented by <Brand1819 className="text-white/80 decoration-white/30">1819twenty</Brand1819>
-        </p>
+        <div className="mx-auto flex max-w-[1320px] flex-wrap items-baseline justify-between gap-x-8 gap-y-2 px-5 py-5 sm:px-8 lg:px-12">
+          <p className="caps-sm text-white/55">
+            Presented by <Brand1819 className="text-white/80 decoration-white/30">1819twenty</Brand1819>
+          </p>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="font-serif text-[0.95rem] text-white/80 underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold"
+          >
+            {CONTACT_EMAIL}
+          </a>
+        </div>
       </div>
     </footer>
   );

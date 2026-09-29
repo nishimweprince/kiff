@@ -29,6 +29,7 @@ export function Hero({
           alt={alt}
           fill
           priority
+          quality={90}
           sizes={split ? "(min-width: 768px) 60vw, 100vw" : "100vw"}
           className="object-cover"
           style={{ objectPosition: position }}

@@ -38,9 +38,11 @@ export default function Home() {
         image="/images/photos/runway-arena.jpg"
         alt="A spiral runway lit in violet at night, lined with guests"
         position="70% 40%"
-        className="min-h-[calc(100svh-4.5rem)] sm:min-h-[calc(100svh-5rem)]"
+        className="flex min-h-[calc(100svh-4.5rem)] sm:min-h-[calc(100svh-5rem)]"
       >
-        <div className="flex max-w-[34rem] flex-col justify-center pb-28 pt-14 sm:pt-16">
+        {/* Logo, tagline and gaps scale with viewport height (svh) so the whole block fits above the fold
+            on short laptop screens; min-h lets it grow only on very small phones. */}
+        <div className="flex max-w-[34rem] flex-col justify-center pb-[clamp(4.5rem,10svh,7rem)] pt-[clamp(1.5rem,5svh,4rem)]">
           <h1 className="sr-only">{EVENT.name}</h1>
           <Image
             src="/images/brand/kiff-logo.png"
@@ -49,29 +51,35 @@ export default function Home() {
             height={769}
             priority
             sizes="(min-width: 640px) 416px, 80vw"
-            className="hero-enter-logo -ml-[3%] w-[min(88%,26rem)]"
+            className="hero-enter-logo -ml-[3%] w-[min(88%,26rem,32svh)]"
           />
-          <p className="hero-enter-tagline mt-8 font-serif text-[clamp(2.3rem,5vw,3.6rem)] font-normal italic leading-[1.04] text-gold">
+          <p className="hero-enter-tagline mt-[clamp(1rem,3svh,2rem)] font-serif text-[clamp(2.3rem,min(5vw,5.5svh),3.6rem)] font-normal italic leading-[1.04] text-gold">
             Where African design
             <br />
             meets the world.
           </p>
-          <DiamondRule animate className="mt-7 w-52" lineClassName="bg-gold/70" />
+          <DiamondRule animate className="mt-[clamp(1rem,3svh,1.75rem)] w-52" lineClassName="bg-gold/70" />
           <div className="hero-enter-meta">
-            <p className="mt-7 flex items-center gap-4">
+            <p className="mt-[clamp(1rem,3svh,1.75rem)] flex items-center gap-4">
               <CalendarDays size={30} strokeWidth={1} className="shrink-0 text-gold" aria-hidden="true" />
               <span className="caps leading-[1.7] text-white">
                 <time dateTime="2027-03-08/2027-03-14">March 8–14, 2027</time>
                 <br />
                 Kigali, Rwanda
+                <span className="block font-serif text-[1.0625rem] normal-case italic tracking-normal text-gold-soft">
+                  {EVENT.venue}
+                </span>
               </span>
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <div className="mt-[clamp(1.25rem,4svh,2.5rem)] flex flex-col gap-3 sm:flex-row sm:gap-4">
               <Button href="/partners" variant="gold-outline">
                 Become a Partner
               </Button>
               <Button href="/apply">Apply Now</Button>
             </div>
+            <p className="mt-5 font-serif text-[1.0625rem] italic text-white/75">
+              Applications close <time dateTime="2027-02-01">{EVENT.deadline}</time>
+            </p>
           </div>
         </div>
         <a
@@ -85,14 +93,15 @@ export default function Home() {
 
       <section aria-label="Festival themes" className="bg-ink text-white">
         <div className="imigongo opacity-70" aria-hidden="true" />
-        {/* Pairs keep a balanced 2 × 2 on phones and join into one line from sm up. */}
+        {/* Pairs keep a balanced 2 × 2 on phones and join into one line from sm up.
+            The negative right margin cancels the caps tracking after each word's last letter so every dot sits optically centred. */}
         <ul className="mx-auto flex max-w-[1320px] flex-col items-center gap-y-2 px-5 py-6 sm:flex-row sm:justify-center">
           {[HOME.themes.slice(0, 2), HOME.themes.slice(2)].map((pair, p) => (
             <li key={p} className="flex items-center">
               {p > 0 && <Dot className="hidden sm:block" />}
-              <span className="caps text-[0.8125rem] sm:text-sm">{pair[0]}</span>
+              <span className="caps mr-[-0.26em] text-[0.8125rem] sm:text-sm">{pair[0]}</span>
               <Dot />
-              <span className="caps text-[0.8125rem] sm:text-sm">{pair[1]}</span>
+              <span className="caps mr-[-0.26em] text-[0.8125rem] sm:text-sm">{pair[1]}</span>
             </li>
           ))}
         </ul>
@@ -105,6 +114,7 @@ export default function Home() {
               src="/images/photos/model-beaded-crown.jpg"
               alt="A model in a beaded crown and a multicolored beaded bodice on the runway"
               fill
+              quality={90}
               sizes="(min-width: 768px) 45vw, 100vw"
               className="object-cover"
               style={{ objectPosition: "50% 30%" }}
@@ -125,6 +135,7 @@ export default function Home() {
               <span className="h-px flex-1 bg-gold/70" aria-hidden="true" />
             </div>
             <p className="prose-serif mt-9 text-ink/90">{HOME.about}</p>
+            <p className="mt-6 font-serif text-[1.35rem] italic text-gold-deep">{HOME.openTo}</p>
           </div>
         </div>
       </section>

@@ -10,12 +10,14 @@ export const EVENT = {
   endDate: "2027-03-14",
   tagline: "Where African design meets the world.",
   deadline: "February 1, 2027",
+  venue: "Venue announced soon",
 };
 
 export const HOME = {
   themes: ["Fashion", "Culture", "Creativity", "Opportunity"],
   about:
     "Held during International Women's Day week 2027, the Kigali International Fashion Festival brings designers, creatives, entrepreneurs, and brands from across Africa and beyond to Rwanda's capital. The festival showcases African craftsmanship, honors the women shaping the fashion industry, opens global markets for designers, and positions Kigali as a hub for the creative industry.",
+  openTo: "Open to designers of every background.",
   cta: "Be Part of a Global Stage",
 };
 
@@ -50,8 +52,22 @@ export type Tier = {
   benefits: string[];
 };
 
-// Display order on desktop: Runway, Couture (featured, center), Atelier.
+// Ordered high to low; Couture is featured. Prices are in USD.
+// "___" in a benefit renders as a fill-in blank on the partners page.
 export const TIERS: Tier[] = [
+  {
+    id: "couture",
+    name: "Couture Partner",
+    price: "$10,000",
+    featured: true,
+    benefits: [
+      "VIP seating for 6",
+      "Named sponsor recognition: “KIFF 2027 in partnership with ___.”",
+      "Logo on all event materials and the runway backdrop",
+      "Speaking opportunity at the opening",
+      "Featured social media campaign",
+    ],
+  },
   {
     id: "runway",
     name: "Runway Partner",
@@ -61,19 +77,6 @@ export const TIERS: Tier[] = [
       "Logo on event materials and the website",
       "A marketplace booth",
       "Social media recognition",
-    ],
-  },
-  {
-    id: "couture",
-    name: "Couture Partner",
-    price: "$10,000",
-    featured: true,
-    benefits: [
-      "VIP seating for 6",
-      "Title recognition",
-      "Logo on all event materials and the runway backdrop",
-      "Speaking opportunity at the opening",
-      "Featured social media campaign",
     ],
   },
   {
@@ -94,6 +97,7 @@ export const STUDIO_PARTNER = {
     "Hair & Makeup",
     "Transportation",
     "Photography & Media",
+    "Printing",
     "Catering",
   ] as const,
 };

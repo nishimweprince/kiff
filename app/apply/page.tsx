@@ -76,7 +76,9 @@ export default function ApplyPage() {
                     </span>
                     <span className="pr-5 text-gold-deep sm:pr-7">
                       <Arrow className="size-6" />
-                      <span className="sr-only">Apply as {row.title.toLowerCase()}</span>
+                      <span className="sr-only">
+                        {row.type === "sponsor" ? "Become a Partner" : `Apply Now as a ${row.title.toLowerCase()}`}
+                      </span>
                     </span>
                   </Link>
                 </li>
@@ -87,7 +89,7 @@ export default function ApplyPage() {
 
         <div className="flex flex-col items-center gap-8 pb-20 pt-12 sm:pb-24">
           <Button href="/apply/form" arrow className="px-14">
-            Start Application
+            Apply Now
           </Button>
           <p className="flex items-center gap-3 text-center text-[1.0625rem]">
             <Mail size={20} strokeWidth={1.25} className="shrink-0 text-gold-deep" aria-hidden="true" />

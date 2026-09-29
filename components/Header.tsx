@@ -94,7 +94,7 @@ export function Header() {
           href="/apply"
           className="caps-sm ml-auto inline-flex h-10 cursor-pointer items-center border border-purple bg-purple px-4 text-white transition-colors hover:bg-purple-deep sm:px-6 md:ml-4"
         >
-          Apply now
+          Apply Now
         </Link>
 
         <button

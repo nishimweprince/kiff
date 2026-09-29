@@ -48,9 +48,9 @@ export const APPLICANT_TYPES = [
 ] as const;
 
 export const SPONSOR_LEVELS = [
-  { value: "couture", label: "Couture ($10,000)" },
-  { value: "runway", label: "Runway ($5,000)" },
-  { value: "atelier", label: "Atelier ($1,500)" },
+  { value: "couture", label: "Couture ($10,000 USD)" },
+  { value: "runway", label: "Runway ($5,000 USD)" },
+  { value: "atelier", label: "Atelier ($1,500 USD)" },
   { value: "studio", label: "Studio Partner (In-Kind)" },
 ] as const;
 

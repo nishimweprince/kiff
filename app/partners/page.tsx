@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Camera,
   Check,
   ConciergeBell,
   Handshake,
+  Printer,
   Scissors,
   ShoppingBag,
   Theater,
@@ -33,8 +35,24 @@ const serviceIcons: Record<(typeof STUDIO_PARTNER.services)[number], LucideIcon>
   "Hair & Makeup": Scissors,
   Transportation: BusFront,
   "Photography & Media": Camera,
+  Printing: Printer,
   Catering: UtensilsCrossed,
 };
+
+// "___" renders as a fill-in line; screen readers hear "your brand" instead of underscores.
+function renderBenefit(text: string) {
+  const [before, after] = text.split("___");
+  if (after === undefined) return text;
+  return (
+    <>
+      {before}
+      <span className="inline-block w-[3.5em] border-b border-gold/70 align-baseline">
+        <span className="sr-only">your brand</span>
+      </span>
+      {after}
+    </>
+  );
+}
 
 export default function PartnersPage() {
   return (
@@ -83,7 +101,7 @@ export default function PartnersPage() {
                 className={clsx(
                   "flex flex-col px-7 pb-10 pt-8 text-white sm:px-9",
                   tier.featured
-                    ? "order-first bg-purple ring-1 ring-gold/60 md:order-none md:-my-5 md:py-12 md:z-10"
+                    ? "bg-purple ring-1 ring-gold/60 md:-my-5 md:py-12 md:z-10"
                     : "bg-ink",
                 )}
               >
@@ -92,13 +110,14 @@ export default function PartnersPage() {
                 </h3>
                 <p className="mt-3 font-serif text-[3.25rem] font-light leading-none tracking-tight [font-variant-numeric:lining-nums]">
                   {tier.price}
+                  <span className="caps-sm ml-2 align-baseline text-gold-soft">USD</span>
                 </p>
                 <span className={clsx("mt-6 block h-px w-12", tier.featured ? "bg-gold" : "bg-gold/60")} aria-hidden="true" />
                 <ul className="mt-6 space-y-3.5 text-[1.0625rem] leading-snug">
                   {tier.benefits.map((b) => (
                     <li key={b} className="flex gap-3">
                       <Check size={17} strokeWidth={1.5} className="mt-[0.2em] shrink-0 text-gold" aria-hidden="true" />
-                      <span className="text-white/90">{b}</span>
+                      <span className="text-white/90">{renderBenefit(b)}</span>
                     </li>
                   ))}
                 </ul>
@@ -115,7 +134,7 @@ export default function PartnersPage() {
               </h2>
               <p className="mt-5 max-w-[52ch] text-[1.125rem] leading-relaxed text-white/85">{STUDIO_PARTNER.body}</p>
             </div>
-            <ul className="grid grid-cols-2 gap-px self-center bg-gold/25 sm:grid-cols-3">
+            <ul className="grid grid-cols-2 gap-px self-center bg-gold/25 sm:grid-cols-4 md:grid-cols-2 lg:grid-cols-4">
               {STUDIO_PARTNER.services.map((service) => {
                 const Icon = serviceIcons[service];
                 return (
@@ -125,6 +144,10 @@ export default function PartnersPage() {
                   </li>
                 );
               })}
+              {/* Seven services; the mark fills the eighth cell so the grid closes evenly. */}
+              <li aria-hidden="true" className="grid place-items-center bg-ink px-2 py-6">
+                <Image src="/images/brand/kiff-horns.png" alt="" width={400} height={371} className="w-9 opacity-40" />
+              </li>
             </ul>
           </div>
         </section>
