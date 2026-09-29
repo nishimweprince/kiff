@@ -18,6 +18,12 @@ function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 }
 
+// Sweep underline ported from 1819twenty's NavLink: hover draws an ink
+// underline sweeping in from the left, the current page draws a solid gold
+// one, so the two states stay distinguishable.
+const sweep =
+  "relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-150 motion-reduce:after:transition-none";
+
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -60,12 +66,14 @@ export function Header() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={clsx(
-                  "caps-sm relative py-2 transition-colors",
-                  active ? "text-gold-deep" : "text-ink hover:text-gold-deep",
+                  "caps-sm py-2 transition-colors",
+                  sweep,
+                  active
+                    ? "text-gold-deep after:scale-x-100 after:bg-gold"
+                    : "text-ink after:bg-ink/40 hover:text-gold-deep hover:after:scale-x-100",
                 )}
               >
                 {item.label}
-                {active && <span className="absolute inset-x-0 -bottom-0.5 h-px bg-gold" aria-hidden="true" />}
               </Link>
             );
           })}
@@ -73,7 +81,10 @@ export function Header() {
             href={SOCIAL.hashtag}
             target="_blank"
             rel="noopener"
-            className="caps-sm py-2 text-ink transition-colors hover:text-gold-deep"
+            className={clsx(
+              "caps-sm py-2 text-ink transition-colors after:bg-ink/40 hover:text-gold-deep hover:after:scale-x-100",
+              sweep,
+            )}
           >
             #KIFF2027
           </a>
@@ -81,7 +92,7 @@ export function Header() {
 
         <Link
           href="/apply"
-          className="caps-sm ml-auto inline-flex h-10 items-center border border-purple bg-purple px-4 text-white transition-colors hover:bg-purple-deep sm:px-6 md:ml-4"
+          className="caps-sm ml-auto inline-flex h-10 cursor-pointer items-center border border-purple bg-purple px-4 text-white transition-colors hover:bg-purple-deep sm:px-6 md:ml-4"
         >
           Apply now
         </Link>
@@ -95,7 +106,7 @@ export function Header() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="-mr-2 grid size-10 place-items-center text-ink md:hidden"
+          className="-mr-2 grid size-10 cursor-pointer place-items-center text-ink md:hidden"
         >
           {open ? <X size={24} strokeWidth={1.25} /> : <Menu size={24} strokeWidth={1.25} />}
         </button>

@@ -182,7 +182,7 @@ export function FileUpload({
                 type="button"
                 onClick={() => onChange((prev) => prev.filter((x) => x.url !== f.url))}
                 aria-label={`Remove ${f.name}`}
-                className="-mr-2 grid size-8 place-items-center text-mute hover:text-ink"
+                className="-mr-2 grid size-8 cursor-pointer place-items-center text-mute hover:text-ink"
               >
                 <X size={16} strokeWidth={1.5} />
               </button>

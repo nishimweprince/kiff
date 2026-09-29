@@ -12,7 +12,7 @@ const variants: Record<Variant, string> = {
 
 export function buttonClass(variant: Variant = "purple", className?: string) {
   return clsx(
-    "group inline-flex min-h-12 items-center justify-center gap-3 px-8 py-2.5 font-serif text-[1.1875rem] leading-none tracking-[0.01em] transition-colors duration-300",
+    "group inline-flex min-h-12 cursor-pointer items-center justify-center gap-3 px-8 py-2.5 font-serif text-[1.1875rem] leading-none tracking-[0.01em] transition-colors duration-300",
     variants[variant],
     className,
   );

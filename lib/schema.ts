@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { isPhoneValid } from "./phone";
 
 // Question wording shared by the form and the submission email.
 export const QUESTIONS = {
@@ -113,7 +114,12 @@ export const sectionOne = z.object({
   type: choose(APPLICANT_TYPES, "Choose how you're applying."),
   fullName: required("Enter your full name."),
   email: z.string().trim().email("Enter an email address like name@example.com."),
-  phone: required("Enter a phone number we can reach on WhatsApp."),
+  phone: z
+    .string()
+    .trim()
+    .min(1, "Enter a phone number we can reach on WhatsApp.")
+    .max(40)
+    .refine(isPhoneValid, "Enter a valid phone number, including the country code."),
   company: required("Enter your company or brand name."),
   country: required("Enter your country."),
   website: required("Enter a website or social media handle."),

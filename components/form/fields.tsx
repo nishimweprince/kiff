@@ -14,10 +14,12 @@ export function FieldError({ id, message }: { id: string; message?: string }) {
   );
 }
 
-const labelClass = "block font-serif text-[1.1875rem] font-medium leading-snug text-ink";
-const hintClass = "mt-1 block text-[1rem] leading-snug text-mute";
-const inputClass =
-  "mt-2.5 block w-full border border-gold/45 bg-white/60 px-4 py-3 text-[1.125rem] text-ink placeholder:text-mute/60 transition-colors focus:border-purple focus:bg-white focus:outline-none aria-[invalid=true]:border-[#9b1c2e]";
+export const labelClass = "block font-serif text-[1.1875rem] font-medium leading-snug text-ink";
+export const hintClass = "mt-1 block text-[1rem] leading-snug text-mute";
+// The shared field skin without width or margin, so the phone row can reuse it for both controls.
+export const inputBase =
+  "block border border-gold/45 bg-white/60 px-4 py-3 text-[1.125rem] text-ink placeholder:text-mute/60 transition-colors focus:border-purple focus:bg-white focus:outline-none aria-[invalid=true]:border-[#9b1c2e]";
+const inputClass = `mt-2.5 w-full ${inputBase}`;
 
 export function TextField({
   id,
@@ -59,9 +61,14 @@ export function TextField({
       <label htmlFor={id} className={labelClass}>
         {label}
       </label>
-      {hint && (
+      {hint ? (
         <span id={`${id}-hint`} className={hintClass}>
           {hint}
+        </span>
+      ) : (
+        // Reserve one hint line so inputs sharing a row stay aligned.
+        <span aria-hidden="true" className={hintClass}>
+          {"\u00A0"}
         </span>
       )}
       {multiline ? (

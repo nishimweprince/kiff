@@ -29,6 +29,7 @@ import {
 } from "@/lib/schema";
 import { Checkbox, CheckboxGroup, FieldError, RadioGroup, TextField } from "./fields";
 import { FileUpload } from "./FileUpload";
+import { PhoneField } from "./PhoneInput";
 
 type S1 = { type: ApplicantType | ""; fullName: string; email: string; phone: string; company: string; country: string; website: string };
 type Sponsor = { title: string; level: string; inKind: string; goals: string; logo: UploadedFile[] };
@@ -264,7 +265,7 @@ export function ApplicationForm({ initialType }: { initialType?: ApplicantType }
             <TextField id="fullName" label={Q.fullName} value={s1.fullName} onChange={set1("fullName")} error={errorFor("fullName")} autoComplete="name" />
             <div className="grid gap-8 sm:grid-cols-2 sm:gap-5">
               <TextField id="email" label={Q.email} type="email" value={s1.email} onChange={set1("email")} error={errorFor("email")} autoComplete="email" />
-              <TextField id="phone" label={Q.phone} type="tel" value={s1.phone} onChange={set1("phone")} error={errorFor("phone")} autoComplete="tel" />
+              <PhoneField id="phone" label={Q.phone} hint="Include the country code" value={s1.phone} onChange={set1("phone")} error={errorFor("phone")} />
             </div>
             <TextField id="company" label={Q.company} value={s1.company} onChange={set1("company")} error={errorFor("company")} autoComplete="organization" />
             <div className="grid gap-8 sm:grid-cols-2 sm:gap-5">
@@ -396,7 +397,7 @@ export function ApplicationForm({ initialType }: { initialType?: ApplicantType }
               setFormError(undefined);
               setStep(step - 1);
             }}
-            className="caps-sm inline-flex items-center justify-center gap-2 py-3 text-ink hover:text-gold-deep"
+            className="caps-sm inline-flex cursor-pointer items-center justify-center gap-2 py-3 text-ink hover:text-gold-deep"
           >
             <ArrowLeft size={16} strokeWidth={1.25} aria-hidden="true" />
             Back

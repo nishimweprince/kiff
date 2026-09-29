@@ -77,6 +77,12 @@
     color: #fff;
   }
 
+  /* Like 1819twenty's shared button base: every button shows a pointer.
+     Utilities still win, so disabled states keep their own cursor. */
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
   input,
   textarea,
   select {

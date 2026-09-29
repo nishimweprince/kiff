@@ -16,6 +16,7 @@ import {
   type UploadedFile,
   type VendorSection,
 } from "./schema";
+import { formatPhone } from "./phone";
 
 export type Answer = string | UploadedFile[];
 export type Row = { question: string; answer: Answer };
@@ -39,7 +40,7 @@ export function toSections(
       { question: Q.type, answer: typeLabel },
       { question: Q.fullName, answer: s1.fullName },
       { question: Q.email, answer: s1.email },
-      { question: Q.phone, answer: s1.phone },
+      { question: Q.phone, answer: formatPhone(s1.phone) },
       { question: Q.company, answer: s1.company },
       { question: Q.country, answer: s1.country },
       { question: Q.website, answer: s1.website },
