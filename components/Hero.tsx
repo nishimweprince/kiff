@@ -11,6 +11,7 @@ export function Hero({
   alt,
   position = "center",
   split = false,
+  fade = false,
   className,
   children,
 }: {
@@ -18,6 +19,8 @@ export function Hero({
   alt: string;
   position?: string;
   split?: boolean;
+  /** Black fade that slides in from the left on load, dimming the text side of the photo. */
+  fade?: boolean;
   className?: string;
   children: React.ReactNode;
 }) {
@@ -38,10 +41,15 @@ export function Hero({
       <div
         aria-hidden="true"
         className={clsx(
-          "absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(30_26_29/0.9)_0%,rgb(30_26_29/0.78)_60%,rgb(30_26_29/0.6)_100%)]",
-          split
-            ? "md:bg-[linear-gradient(90deg,var(--color-ink)_38%,rgb(30_26_29/0.55)_52%,rgb(30_26_29/0)_70%)] lg:bg-[linear-gradient(90deg,var(--color-ink)_44%,rgb(30_26_29/0.5)_56%,rgb(30_26_29/0)_72%)]"
-            : "md:bg-[linear-gradient(90deg,rgb(30_26_29/0.88)_0%,rgb(30_26_29/0.5)_42%,rgb(30_26_29/0)_75%)]",
+          "absolute inset-0 -z-10",
+          fade
+            ? // Text spans the full width on phones, so the fade only opens up to the right from md.
+              "hero-fade bg-[linear-gradient(90deg,rgb(0_0_0/0.82)_0%,rgb(0_0_0/0.7)_60%,rgb(0_0_0/0.5)_100%)] md:bg-[linear-gradient(90deg,rgb(0_0_0/0.85)_0%,rgb(0_0_0/0.72)_30%,rgb(0_0_0/0.35)_55%,rgb(0_0_0/0)_82%)]"
+            : "bg-[linear-gradient(90deg,rgb(30_26_29/0.9)_0%,rgb(30_26_29/0.78)_60%,rgb(30_26_29/0.6)_100%)]",
+          !fade &&
+            (split
+              ? "md:bg-[linear-gradient(90deg,var(--color-ink)_38%,rgb(30_26_29/0.55)_52%,rgb(30_26_29/0)_70%)] lg:bg-[linear-gradient(90deg,var(--color-ink)_44%,rgb(30_26_29/0.5)_56%,rgb(30_26_29/0)_72%)]"
+              : "md:bg-[linear-gradient(90deg,rgb(30_26_29/0.88)_0%,rgb(30_26_29/0.5)_42%,rgb(30_26_29/0)_75%)]"),
         )}
       />
       <div

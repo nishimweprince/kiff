@@ -92,6 +92,10 @@
 
 /* The one orchestrated moment: the home hero assembles on first load. */
 @media (prefers-reduced-motion: no-preference) {
+  /* The black fade sweeps in from the left first, dimming the photo behind the text as the logo resolves. */
+  .hero-fade {
+    animation: fade-slide 1.3s var(--ease-couture) both;
+  }
   .hero-enter-logo {
     animation: logo-in 1.1s var(--ease-couture) both;
   }
@@ -106,6 +110,16 @@
     animation: fade 0.8s ease-out 1.45s both;
   }
 
+  @keyframes fade-slide {
+    from {
+      opacity: 0;
+      transform: translateX(-35%);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
   @keyframes logo-in {
     from {
       opacity: 0;

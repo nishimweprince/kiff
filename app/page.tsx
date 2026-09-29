@@ -38,6 +38,7 @@ export default function Home() {
         image="/images/photos/runway-arena.jpg"
         alt="A spiral runway lit in violet at night, lined with guests"
         position="70% 40%"
+        fade
         className="flex min-h-[calc(100svh-4.5rem)] sm:min-h-[calc(100svh-5rem)]"
       >
         {/* Logo, tagline and gaps scale with viewport height (svh) so the whole block fits above the fold
