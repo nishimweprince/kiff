@@ -1,5 +1,6 @@
 "use server";
 
+import { render } from "@react-email/components";
 import { Resend } from "resend";
 import { applicationsOpen, CONTACT_EMAIL } from "@/lib/config";
 import { CONFIRMATION_EMAIL } from "@/lib/content";
@@ -54,32 +55,47 @@ export async function submitApplication(payload: Payload): Promise<SubmitResult>
     timeZone: "Africa/Kigali",
   }).format(new Date());
 
-  const notification = await resend.emails.send({
-    from: RESEND_FROM_EMAIL,
-    to: APPLICATION_TO_EMAIL.split(",").map((s) => s.trim()),
-    replyTo: s1.email,
-    subject: `New KIFF application from ${s1.fullName} (${typeLabel})`,
-    react: SubmissionEmail({ heading, sections: toSections(s1, two.data, three.data), submittedAt }),
-  });
+  // Render the templates here rather than passing `react:` to Resend. Resend would lazy-load
+  // `@react-email/render`, which @react-email/components v1 no longer installs as a separate package.
+  const submissionEmail = SubmissionEmail({ heading, sections: toSections(s1, two.data, three.data), submittedAt });
+  const confirmationEmail = ConfirmationEmail();
+  const sendFailed = {
+    ok: false,
+    message: `We couldn't send your application. Try again in a few minutes, or email ${CONTACT_EMAIL}.`,
+  } as const;
 
-  if (notification.error) {
-    console.error("Resend notification failed", notification.error);
-    return {
-      ok: false,
-      message: `We couldn't send your application. Try again in a few minutes, or email ${CONTACT_EMAIL}.`,
-    };
+  try {
+    const notification = await resend.emails.send({
+      from: RESEND_FROM_EMAIL,
+      to: APPLICATION_TO_EMAIL.split(",").map((s) => s.trim()),
+      replyTo: s1.email,
+      subject: `New KIFF application from ${s1.fullName} (${typeLabel})`,
+      html: await render(submissionEmail),
+      text: await render(submissionEmail, { plainText: true }),
+    });
+    if (notification.error) {
+      console.error("Resend notification failed", notification.error);
+      return sendFailed;
+    }
+  } catch (error) {
+    console.error("Sending the application email threw", error);
+    return sendFailed;
   }
 
   // The application is in; a failed confirmation shouldn't make the applicant resubmit.
-  const confirmation = await resend.emails.send({
-    from: RESEND_FROM_EMAIL,
-    to: s1.email,
-    replyTo: CONTACT_EMAIL,
-    subject: CONFIRMATION_EMAIL.subject,
-    text: CONFIRMATION_EMAIL.body,
-    react: ConfirmationEmail(),
-  });
-  if (confirmation.error) console.error("Resend confirmation failed", confirmation.error);
+  try {
+    const confirmation = await resend.emails.send({
+      from: RESEND_FROM_EMAIL,
+      to: s1.email,
+      replyTo: CONTACT_EMAIL,
+      subject: CONFIRMATION_EMAIL.subject,
+      html: await render(confirmationEmail),
+      text: CONFIRMATION_EMAIL.body,
+    });
+    if (confirmation.error) console.error("Resend confirmation failed", confirmation.error);
+  } catch (error) {
+    console.error("Sending the confirmation email threw", error);
+  }
 
   return { ok: true };
 }
