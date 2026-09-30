@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { LuMenu as Menu, LuX as X } from "react-icons/lu";
 import { SOCIAL } from "@/lib/config";
 import { clsx } from "@/lib/clsx";
 
@@ -108,7 +108,11 @@ export function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           className="-mr-2 grid size-10 cursor-pointer place-items-center text-ink md:hidden"
         >
-          {open ? <X size={24} strokeWidth={1.25} /> : <Menu size={24} strokeWidth={1.25} />}
+          {open ? (
+            <X size={24} strokeWidth={1.25} aria-hidden="true" />
+          ) : (
+            <Menu size={24} strokeWidth={1.25} aria-hidden="true" />
+          )}
         </button>
       </div>
 

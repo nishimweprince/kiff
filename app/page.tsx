@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CalendarDays, ChevronDown } from "lucide-react";
+import { LuCalendarDays as CalendarDays, LuChevronDown as ChevronDown } from "react-icons/lu";
 import { Hero } from "@/components/Hero";
 import { Button } from "@/components/Button";
 import { DiamondRule } from "@/components/DiamondRule";

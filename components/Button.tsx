@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { LuArrowRight as ArrowRight } from "react-icons/lu";
 import { clsx } from "@/lib/clsx";
 
 type Variant = "purple" | "gold-outline" | "light-outline";

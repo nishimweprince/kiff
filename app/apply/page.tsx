@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays, Handshake, Mail, ShoppingBag } from "lucide-react";
+import { LuCalendarDays as CalendarDays, LuMail as Mail } from "react-icons/lu";
+import { PiDressLight, PiHandshakeLight, PiShoppingBagLight } from "react-icons/pi";
 import { Hero, HeroTitle } from "@/components/Hero";
 import { Arrow, Button } from "@/components/Button";
 import { DiamondRule } from "@/components/DiamondRule";
 import { SectionLabel } from "@/components/SectionLabel";
-import { DressForm } from "@/components/icons";
 import { APPLICANT_ROWS, APPLY_INTRO } from "@/lib/content";
 import { CONTACT_EMAIL } from "@/lib/config";
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Apply to the Kigali International Fashion Festival, March 8–14, 2027, as a designer, vendor, or sponsor. Applications close February 1, 2027.",
 };
 
-const icons = { designer: DressForm, vendor: ShoppingBag, sponsor: Handshake } as const;
+const icons = { designer: PiDressLight, vendor: PiShoppingBagLight, sponsor: PiHandshakeLight } as const;
 
 export default function ApplyPage() {
   return (
@@ -58,7 +58,7 @@ export default function ApplyPage() {
                     href={`/apply/form?type=${row.type}`}
                     className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-5 border border-gold/40 bg-ivory pl-5 transition-colors hover:border-gold sm:grid-cols-[auto_minmax(0,1fr)_minmax(0,14rem)_auto] sm:gap-x-7 sm:pl-7"
                   >
-                    <Icon size={40} strokeWidth={1} className="text-gold" />
+                    <Icon size={40} className="text-gold" aria-hidden="true" />
                     <span className="py-6">
                       <span className="block font-serif text-[1.75rem] font-medium leading-tight">{row.title}</span>
                       <span className="mt-1 block text-[1.0625rem] leading-snug text-mute">{row.body}</span>
@@ -89,7 +89,7 @@ export default function ApplyPage() {
 
         <div className="flex flex-col items-center gap-8 pb-20 pt-12 sm:pb-24">
           <Button href="/apply/form" arrow className="px-14">
-            Apply Now
+            Start Application
           </Button>
           <p className="flex items-center gap-3 text-center text-[1.0625rem]">
             <Mail size={20} strokeWidth={1.25} className="shrink-0 text-gold-deep" aria-hidden="true" />

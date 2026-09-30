@@ -1,6 +1,6 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { LuCheck as Check } from "react-icons/lu";
 import { clsx } from "@/lib/clsx";
 
 type Option = { value: string; label: string };
@@ -97,7 +97,7 @@ function ChoiceMark({ kind, checked }: { kind: "radio" | "checkbox"; checked: bo
         checked ? "border-purple bg-purple text-white" : "border-gold/70 bg-white/60",
       )}
     >
-      {checked && (kind === "checkbox" ? <Check size={13} strokeWidth={2} /> : <span className="size-1.5 bg-gold" />)}
+      {checked && (kind === "checkbox" ? <Check size={13} strokeWidth={2} aria-hidden="true" /> : <span className="size-1.5 bg-gold" />)}
     </span>
   );
 }

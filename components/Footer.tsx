@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { CONTACT_EMAIL, SOCIAL } from "@/lib/config";
 import { Brand1819 } from "./Brand1819";
-import { Facebook, Instagram, TikTok } from "./icons";
+import { SiFacebook, SiInstagram, SiTiktok } from "react-icons/si";
 
 const socials = [
-  { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram },
-  { href: SOCIAL.facebook, label: "Facebook", Icon: Facebook },
-  { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTok },
+  { href: SOCIAL.instagram, label: "Instagram", Icon: SiInstagram },
+  { href: SOCIAL.facebook, label: "Facebook", Icon: SiFacebook },
+  { href: SOCIAL.tiktok, label: "TikTok", Icon: SiTiktok },
 ];
 
 export function Footer() {
@@ -42,7 +42,7 @@ export function Footer() {
                 aria-label={`KIFF on ${label} (opens in a new tab)`}
                 className="grid size-10 place-items-center text-gold transition-colors hover:text-gold-soft"
               >
-                <Icon size={22} />
+                <Icon size={19} aria-hidden="true" />
               </a>
             </li>
           ))}

@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { FileText, ImageIcon, LoaderCircle, Upload, X } from "lucide-react";
+import {
+  LuFileText as FileText,
+  LuImage as ImageIcon,
+  LuLoaderCircle as LoaderCircle,
+  LuUpload as Upload,
+  LuX as X,
+} from "react-icons/lu";
 import type { UploadedFile } from "@/lib/schema";
 import { FieldError } from "./fields";
 import { clsx } from "@/lib/clsx";
@@ -184,7 +190,7 @@ export function FileUpload({
                 aria-label={`Remove ${f.name}`}
                 className="-mr-2 grid size-8 cursor-pointer place-items-center text-mute hover:text-ink"
               >
-                <X size={16} strokeWidth={1.5} />
+                <X size={16} strokeWidth={1.5} aria-hidden="true" />
               </button>
             </li>
           ))}

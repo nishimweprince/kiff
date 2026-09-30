@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
-import { ArrowLeft, Handshake, LoaderCircle, ShoppingBag } from "lucide-react";
+import { LuArrowLeft as ArrowLeft, LuLoaderCircle as LoaderCircle } from "react-icons/lu";
+import { PiDressLight, PiHandshakeLight, PiShoppingBagLight } from "react-icons/pi";
 import { submitApplication } from "@/app/apply/form/actions";
 import { With1819 } from "@/components/Brand1819";
 import { Arrow, buttonClass } from "@/components/Button";
-import { DressForm } from "@/components/icons";
 import { CONTACT_EMAIL } from "@/lib/config";
 import { MARKETPLACE_EXPLAINER } from "@/lib/content";
 import { clsx } from "@/lib/clsx";
@@ -73,7 +73,7 @@ const initialS2: S2 = {
   vendor: { category: "", categoryOther: "", products: "", days: [], booth: [], boothOther: "", photos: [], marketplace: "" },
 };
 
-const TYPE_ICONS = { sponsor: Handshake, designer: DressForm, vendor: ShoppingBag } as const;
+const TYPE_ICONS = { designer: PiDressLight, vendor: PiShoppingBagLight, sponsor: PiHandshakeLight } as const;
 
 const marketplaceLegend = <With1819 text={Q.marketplace} />;
 const marketplaceHint = <With1819 text={MARKETPLACE_EXPLAINER} />;
@@ -230,7 +230,10 @@ export function ApplicationForm({ initialType }: { initialType?: ApplicantType }
         {step === 0 && (
           <>
             <fieldset id="type" tabIndex={-1} aria-describedby={errors.type ? "type-error" : undefined} className="focus:outline-none">
-              <legend className="font-serif text-[1.1875rem] font-medium">{Q.type}</legend>
+              <legend className="font-serif text-[1.1875rem] font-medium">
+                {Q.type}
+                {!type && <span className="font-normal italic text-mute"> (choose one to continue)</span>}
+              </legend>
               <div className="mt-3 grid grid-cols-3 gap-2 sm:gap-3">
                 {APPLICANT_TYPES.map((o) => {
                   const Icon = TYPE_ICONS[o.value];
@@ -254,7 +257,7 @@ export function ApplicationForm({ initialType }: { initialType?: ApplicantType }
                         }}
                         className="sr-only"
                       />
-                      <Icon size={34} strokeWidth={1} className={checked ? "text-gold" : "text-gold-deep"} />
+                      <Icon size={34} className={checked ? "text-gold" : "text-gold-deep"} aria-hidden="true" />
                       <span className="font-serif text-[1.25rem] leading-none">{o.label}</span>
                     </label>
                   );

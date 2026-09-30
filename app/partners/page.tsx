@@ -1,23 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import type { IconType } from "react-icons";
 import {
-  Camera,
-  Check,
-  ConciergeBell,
-  Handshake,
-  Printer,
-  Scissors,
-  ShoppingBag,
-  Theater,
-  BusFront,
-  UtensilsCrossed,
-  type LucideIcon,
-} from "lucide-react";
+  LuBusFront as BusFront,
+  LuCamera as Camera,
+  LuCheck as Check,
+  LuConciergeBell as ConciergeBell,
+  LuPrinter as Printer,
+  LuScissors as Scissors,
+  LuTheater as Theater,
+  LuUtensilsCrossed as UtensilsCrossed,
+} from "react-icons/lu";
+import { PiDressLight, PiHandshakeLight, PiShoppingBagLight } from "react-icons/pi";
 import { Hero, HeroTitle } from "@/components/Hero";
 import { Button } from "@/components/Button";
 import { DiamondRule } from "@/components/DiamondRule";
 import { SectionLabel } from "@/components/SectionLabel";
-import { DressForm } from "@/components/icons";
 import { PARTNERS_INTRO, STUDIO_PARTNER, TIERS, WAYS_TO_PARTNER } from "@/lib/content";
 import { clsx } from "@/lib/clsx";
 
@@ -27,9 +25,9 @@ export const metadata: Metadata = {
     "Partner with the Kigali International Fashion Festival as a designer, vendor, sponsor, or in-kind Studio Partner. Couture, Runway, and Atelier sponsorship levels.",
 };
 
-const wayIcons = { designer: DressForm, vendor: ShoppingBag, sponsor: Handshake } as const;
+const wayIcons = { designer: PiDressLight, vendor: PiShoppingBagLight, sponsor: PiHandshakeLight } as const;
 
-const serviceIcons: Record<(typeof STUDIO_PARTNER.services)[number], LucideIcon> = {
+const serviceIcons: Record<(typeof STUDIO_PARTNER.services)[number], IconType> = {
   "Venue & Staging": Theater,
   Hospitality: ConciergeBell,
   "Hair & Makeup": Scissors,
@@ -83,7 +81,7 @@ export default function PartnersPage() {
               const Icon = wayIcons[way.type];
               return (
                 <li key={way.type} className="flex flex-col items-center border border-gold/40 px-7 pb-9 pt-8 text-center">
-                  <Icon size={40} strokeWidth={1} className="text-gold" />
+                  <Icon size={40} className="text-gold" aria-hidden="true" />
                   <h3 className="mt-4 font-serif text-[1.75rem] font-medium leading-tight">{way.title}</h3>
                   <p className="mt-3 max-w-[30ch] text-[1.0625rem] leading-relaxed text-mute">{way.body}</p>
                 </li>
