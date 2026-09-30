@@ -52,21 +52,14 @@ export type Tier = {
   benefits: string[];
 };
 
-// Ordered high to low; Couture is featured. Prices are in USD.
+// Ordered low to high; Couture is featured. Prices are in USD.
 // "___" in a benefit renders as a fill-in blank on the partners page.
 export const TIERS: Tier[] = [
   {
-    id: "couture",
-    name: "Couture Partner",
-    price: "$10,000",
-    featured: true,
-    benefits: [
-      "VIP seating for 6",
-      "Named sponsor recognition: “KIFF 2027 in partnership with ___.”",
-      "Logo on all event materials and the runway backdrop",
-      "Speaking opportunity at the opening",
-      "Featured social media campaign",
-    ],
+    id: "atelier",
+    name: "Atelier Partner",
+    price: "$1,500",
+    benefits: ["2 event passes", "Logo on the website and event signage", "Social media mention"],
   },
   {
     id: "runway",
@@ -80,10 +73,17 @@ export const TIERS: Tier[] = [
     ],
   },
   {
-    id: "atelier",
-    name: "Atelier Partner",
-    price: "$1,500",
-    benefits: ["2 event passes", "Logo on the website and event signage", "Social media mention"],
+    id: "couture",
+    name: "Couture Partner",
+    price: "$10,000",
+    featured: true,
+    benefits: [
+      "VIP seating for 6",
+      "Named sponsor recognition: “KIFF 2027 in partnership with ___.”",
+      "Logo on all event materials and the runway backdrop",
+      "Speaking opportunity at the opening",
+      "Featured social media campaign",
+    ],
   },
 ];
 
