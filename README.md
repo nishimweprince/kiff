@@ -8,6 +8,7 @@ The site runs on Next.js 16 (App Router), uses Tailwind CSS v4, sends email thro
 | Route | Page |
 |---|---|
 | `/` | Home |
+| `/about` | About the festival |
 | `/partners` | Partners and sponsorship levels |
 | `/apply` | Applicant types and the "Start Application" button |
 | `/apply/form?type=designer\|vendor\|sponsor` | Branching application form (the type is optional and preselects the branch) |
