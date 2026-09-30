@@ -24,7 +24,7 @@ export default function AboutPage() {
     <>
       {/* Type-led hero: the other pages open on a dark photo, this one on the headline itself. */}
       <section className={`${container} grid items-center gap-10 pb-16 pt-12 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:gap-14 md:pb-24 md:pt-20 lg:gap-20`}>
-        <div>
+        <div data-reveal="stagger">
           <h1 className="font-serif text-[clamp(3rem,7.5vw,6.5rem)] font-light leading-[0.95] tracking-[-0.015em] text-balance text-ink">
             {ABOUT.headline}
           </h1>
@@ -36,7 +36,7 @@ export default function AboutPage() {
             Kigali, Rwanda
           </p>
         </div>
-        <div className="relative aspect-[4/5] md:aspect-[3/4]">
+        <div data-reveal="unveil" className="relative aspect-[4/5] overflow-hidden md:aspect-[3/4]">
           <Image
             src="/images/photos/model-white-fringe.jpg"
             alt="A model in a long white fringed coat studded with pearls walks the runway barefoot"
@@ -52,7 +52,7 @@ export default function AboutPage() {
 
       <div className="imigongo bg-ink" aria-hidden="true" />
 
-      <section aria-labelledby="culture" className={`${container} grid gap-6 pb-14 pt-16 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:pt-24`}>
+      <section data-reveal="stagger" aria-labelledby="culture" className={`${container} grid gap-6 pb-14 pt-16 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:pt-24`}>
         <h2 id="culture" className={h2}>
           Culture and growth
         </h2>
@@ -60,10 +60,10 @@ export default function AboutPage() {
       </section>
 
       <section aria-labelledby="expect" className={`${container} pb-20 pt-6 md:pb-28`}>
-        <h2 id="expect" className={h2}>
+        <h2 id="expect" data-reveal="rise" className={h2}>
           What to expect
         </h2>
-        <ul className="mt-10 grid gap-10 border-t border-gold/40 pt-10 md:grid-cols-3 md:gap-12">
+        <ul data-reveal="stagger" className="mt-10 grid gap-10 border-t border-gold/40 pt-10 md:grid-cols-3 md:gap-12">
           {ABOUT.expect.map((item, i) => {
             const Icon = expectIcons[i];
             return (
@@ -78,7 +78,7 @@ export default function AboutPage() {
 
       <section aria-labelledby="kigali" className="bg-ink text-white">
         <div className="grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-          <div className="relative aspect-[4/5] md:aspect-auto md:min-h-[38rem]">
+          <div data-reveal="unveil" className="relative aspect-[4/5] overflow-hidden md:aspect-auto md:min-h-[38rem]">
             <Image
               src="/images/photos/model-feather-gown.jpg"
               alt="A model in a green gown with a raffia hem walks beneath a lit arch as guests look on"
@@ -89,7 +89,7 @@ export default function AboutPage() {
               style={{ objectPosition: "50% 65%" }}
             />
           </div>
-          <div className="flex flex-col justify-center px-5 py-16 sm:px-12 md:py-20 lg:px-20">
+          <div data-reveal="stagger" className="flex flex-col justify-center px-5 py-16 sm:px-12 md:py-20 lg:px-20">
             <h2 id="kigali" className={h2}>
               Why Kigali
             </h2>
@@ -99,7 +99,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="presented" className={`${container} grid gap-6 py-20 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:py-24`}>
+      <section data-reveal="stagger" aria-labelledby="presented" className={`${container} grid gap-6 py-20 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:py-24`}>
         <h2 id="presented" className={h2}>
           Presented by 1819twenty
         </h2>
@@ -109,7 +109,7 @@ export default function AboutPage() {
       </section>
 
       <section aria-labelledby="join" className="bg-purple text-white">
-        <div className={`${container} py-16 sm:py-20`}>
+        <div data-reveal="stagger" className={`${container} py-16 sm:py-20`}>
           <Image src="/images/brand/kiff-horns.png" alt="" width={400} height={371} className="w-12" />
           <h2 id="join" className={`${h2} mt-5`}>
             Join us

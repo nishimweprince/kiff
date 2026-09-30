@@ -72,11 +72,11 @@ export default function PartnersPage() {
       </Hero>
 
       <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-        <p className="prose-serif mx-auto pb-4 pt-14 text-center text-[1.3rem] sm:pt-16">{PARTNERS_INTRO}</p>
+        <p data-reveal="rise" className="prose-serif mx-auto pb-4 pt-14 text-center text-[1.3rem] sm:pt-16">{PARTNERS_INTRO}</p>
 
         <section aria-labelledby="ways" className="pt-10">
-          <SectionLabel id="ways">Ways to partner</SectionLabel>
-          <ul className="mt-9 grid gap-4 md:grid-cols-3 md:gap-5">
+          <SectionLabel id="ways" reveal>Ways to partner</SectionLabel>
+          <ul data-reveal="stagger" className="mt-9 grid gap-4 md:grid-cols-3 md:gap-5">
             {WAYS_TO_PARTNER.map((way) => {
               const Icon = wayIcons[way.type];
               return (
@@ -91,8 +91,8 @@ export default function PartnersPage() {
         </section>
 
         <section aria-labelledby="tiers" className="pt-20">
-          <SectionLabel id="tiers">Sponsorship opportunities</SectionLabel>
-          <ul className="mt-9 grid items-stretch gap-4 md:mt-14 md:grid-cols-3 md:gap-0">
+          <SectionLabel id="tiers" reveal>Sponsorship opportunities</SectionLabel>
+          <ul data-reveal="stagger" className="mt-9 grid items-stretch gap-4 md:mt-14 md:grid-cols-3 md:gap-0">
             {TIERS.map((tier) => (
               <li
                 key={tier.id}
@@ -123,7 +123,7 @@ export default function PartnersPage() {
           </ul>
         </section>
 
-        <section aria-labelledby="studio" className="mt-16 bg-ink text-white md:mt-20">
+        <section data-reveal="rise" aria-labelledby="studio" className="mt-16 bg-ink text-white md:mt-20">
           <div className="grid gap-10 px-7 py-10 sm:px-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-14 md:py-12 lg:px-14">
             <div>
               <h2 id="studio" className="caps text-[0.8125rem]">
@@ -149,7 +149,7 @@ export default function PartnersPage() {
           </div>
         </section>
 
-        <div className="flex justify-center pb-20 pt-12 sm:pb-24">
+        <div data-reveal="rise" className="flex justify-center pb-20 pt-12 sm:pb-24">
           <Button href="/apply/form?type=sponsor" arrow>
             Become a Partner
           </Button>

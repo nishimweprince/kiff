@@ -96,7 +96,7 @@ export default function Home() {
         <div className="imigongo opacity-70" aria-hidden="true" />
         {/* Pairs keep a balanced 2 × 2 on phones and join into one line from sm up.
             The negative right margin cancels the caps tracking after each word's last letter so every dot sits optically centred. */}
-        <ul className="mx-auto flex max-w-[1320px] flex-col items-center gap-y-2 px-5 py-6 sm:flex-row sm:justify-center">
+        <ul data-reveal="stagger" className="mx-auto flex max-w-[1320px] flex-col items-center gap-y-2 px-5 py-6 sm:flex-row sm:justify-center">
           {[HOME.themes.slice(0, 2), HOME.themes.slice(2)].map((pair, p) => (
             <li key={p} className="flex items-center">
               {p > 0 && <Dot className="hidden sm:block" />}
@@ -110,7 +110,7 @@ export default function Home() {
 
       <section id="about" aria-labelledby="about-title" className="scroll-mt-20">
         <div className="grid md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
-          <div className="relative aspect-[4/5] md:aspect-auto md:min-h-[46rem]">
+          <div data-reveal="unveil" className="relative aspect-[4/5] overflow-hidden md:aspect-auto md:min-h-[46rem]">
             <Image
               src="/images/photos/model-beaded-crown.jpg"
               alt="A model in a beaded crown and a multicolored beaded bodice on the runway"
@@ -121,7 +121,7 @@ export default function Home() {
               style={{ objectPosition: "50% 30%" }}
             />
           </div>
-          <div className="flex flex-col items-center justify-center px-6 py-16 text-center sm:px-12 md:py-20 lg:px-20">
+          <div data-reveal="stagger" className="flex flex-col items-center justify-center px-6 py-16 text-center sm:px-12 md:py-20 lg:px-20">
             <Image src="/images/brand/kiff-mark.png" alt="" width={451} height={234} className="w-48 sm:w-56" />
             <h2 id="about-title" className="caps mt-7 text-base leading-[1.6] text-ink sm:text-lg">
               Kigali International
@@ -142,14 +142,17 @@ export default function Home() {
       </section>
 
       <section aria-labelledby="cta-title" className="bg-purple text-white">
-        <div className="mx-auto flex max-w-[1320px] flex-col items-center px-5 py-16 text-center sm:py-20">
+        <div data-reveal="stagger" className="mx-auto flex max-w-[1320px] flex-col items-center px-5 py-16 text-center sm:py-20">
           <Image src="/images/brand/kiff-horns.png" alt="" width={400} height={371} className="w-14" />
           <h2 id="cta-title" className="mt-5 font-serif text-[clamp(2.1rem,4.5vw,3.25rem)] font-light leading-tight">
             {HOME.cta}
           </h2>
-          <Button href="/apply" variant="light-outline" arrow className="mt-8">
-            Apply Now
-          </Button>
+          {/* Wrapped so the reveal transition doesn't replace the button's own hover transition. */}
+          <div className="mt-8">
+            <Button href="/apply" variant="light-outline" arrow>
+              Apply Now
+            </Button>
+          </div>
         </div>
       </section>
     </>

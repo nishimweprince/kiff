@@ -45,11 +45,11 @@ export default function ApplyPage() {
       </Hero>
 
       <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
-        <p className="prose-serif mx-auto pt-14 text-center text-[1.3rem] sm:pt-16">{APPLY_INTRO}</p>
+        <p data-reveal="rise" className="prose-serif mx-auto pt-14 text-center text-[1.3rem] sm:pt-16">{APPLY_INTRO}</p>
 
         <section aria-labelledby="types" className="pt-12">
-          <SectionLabel id="types">Applicant types</SectionLabel>
-          <ul className="mt-8 flex flex-col gap-3">
+          <SectionLabel id="types" reveal>Applicant types</SectionLabel>
+          <ul data-reveal="stagger" className="mt-8 flex flex-col gap-3">
             {APPLICANT_ROWS.map((row) => {
               const Icon = icons[row.type];
               return (
@@ -87,7 +87,7 @@ export default function ApplyPage() {
           </ul>
         </section>
 
-        <div className="flex flex-col items-center gap-8 pb-20 pt-12 sm:pb-24">
+        <div data-reveal="rise" className="flex flex-col items-center gap-8 pb-20 pt-12 sm:pb-24">
           <Button href="/apply/form" arrow className="px-14">
             Start Application
           </Button>
