@@ -15,7 +15,7 @@ export function SmoothScroll() {
     const lenis = new Lenis({
       autoRaf: true,
       // Higher lerp = the page catches up to the wheel sooner; 0.09 and 0.16 still felt laggy.
-      lerp: 0.24,
+      lerp: 0.5,
       // Anchor links glide too; targets keep clear of the sticky header via their scroll-mt.
       anchors: true,
       // Scrollable lists (the country combobox) keep their own native scroll.
