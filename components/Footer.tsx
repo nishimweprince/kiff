@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { CONTACT_EMAIL, SOCIAL } from "@/lib/config";
 import { Brand1819 } from "./Brand1819";
-import { Facebook, Instagram } from "./icons";
+import { Facebook, Instagram, TikTok } from "./icons";
 
 const socials = [
   { href: SOCIAL.instagram, label: "Instagram", Icon: Instagram },
   { href: SOCIAL.facebook, label: "Facebook", Icon: Facebook },
+  { href: SOCIAL.tiktok, label: "TikTok", Icon: TikTok },
 ];
 
 export function Footer() {

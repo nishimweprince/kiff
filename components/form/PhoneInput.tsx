@@ -65,7 +65,7 @@ function CountryCallingCodeSelect({ value, onChange, options, disabled, readOnly
       options={countries}
       disabled={disabled || readOnly}
       ariaLabel="Country calling code"
-      placeholder="Country"
+      placeholder="Code"
       searchPlaceholder="Search countries or codes"
       emptyText="No matching country"
       triggerLabel={value ? `${value} +${getCountryCallingCode(value)}` : undefined}
@@ -83,9 +83,8 @@ const PhoneNumberField = forwardRef<HTMLInputElement, ComponentPropsWithoutRef<"
 });
 
 /**
- * Phone number with a country calling code. There is no default country:
- * digits typed before one is chosen are read as an international number, and
- * a typed `+code` selects its country.
+ * Phone number with a country calling code. Defaults to Rwanda (+250), where
+ * most applicants are; a typed `+code` still selects its country.
  */
 export function PhoneInput({
   value,
@@ -115,6 +114,7 @@ export function PhoneInput({
       // A stored number is shown the way a typed one is: the calling code
       // stays in the selector rather than being repeated in the input.
       initialValueFormat="national"
+      defaultCountry="RW"
       metadata={metadata}
       labels={countryLabels}
       value={value || undefined}

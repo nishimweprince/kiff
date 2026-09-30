@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: `Apply to the ${EVENT.name} as a designer, vendor, or sponsor. Applications close ${EVENT.deadline}.`,
 };
 
-const TYPES: ApplicantType[] = ["sponsor", "designer", "vendor"];
+const TYPES: ApplicantType[] = ["designer", "vendor", "sponsor"];
 
 export default async function ApplicationPage({ searchParams }: PageProps<"/apply/form">) {
   const { type } = await searchParams;

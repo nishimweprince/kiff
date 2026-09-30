@@ -373,11 +373,23 @@ export function ApplicationForm({ initialType }: { initialType?: ApplicantType }
           </>
         )}
 
-        {/* Honeypot, hidden from people and assistive tech. */}
-        <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        {/* Honeypot, hidden from people and assistive tech. Inline styles keep it hidden even if the stylesheet
+            fails, and the neutral label and new-password hint stop browser autofill from filling it for real
+            applicants, whose submission would otherwise be silently dropped as spam. */}
+        <div
+          aria-hidden="true"
+          style={{ position: "absolute", left: "-10000px", top: "auto", width: 1, height: 1, overflow: "hidden" }}
+        >
           <label>
-            Nickname
-            <input type="text" tabIndex={-1} autoComplete="off" value={nickname} onChange={(e) => setNickname(e.target.value)} />
+            Leave this field empty
+            <input
+              type="text"
+              name="kiff_check"
+              tabIndex={-1}
+              autoComplete="new-password"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+            />
           </label>
         </div>
       </div>

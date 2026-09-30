@@ -42,15 +42,15 @@ export const QUESTIONS = {
 } as const;
 
 export const APPLICANT_TYPES = [
-  { value: "sponsor", label: "Sponsor" },
   { value: "designer", label: "Designer" },
   { value: "vendor", label: "Vendor" },
+  { value: "sponsor", label: "Sponsor" },
 ] as const;
 
 export const SPONSOR_LEVELS = [
-  { value: "couture", label: "Couture ($10,000 USD)" },
-  { value: "runway", label: "Runway ($5,000 USD)" },
-  { value: "atelier", label: "Atelier ($1,500 USD)" },
+  { value: "couture", label: "Couture ($10,000)" },
+  { value: "runway", label: "Runway ($5,000)" },
+  { value: "atelier", label: "Atelier ($1,500)" },
   { value: "studio", label: "Studio Partner (In-Kind)" },
 ] as const;
 

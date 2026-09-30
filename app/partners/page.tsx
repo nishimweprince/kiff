@@ -110,7 +110,6 @@ export default function PartnersPage() {
                 </h3>
                 <p className="mt-3 font-serif text-[3.25rem] font-light leading-none tracking-tight [font-variant-numeric:lining-nums]">
                   {tier.price}
-                  <span className="caps-sm ml-2 align-baseline text-gold-soft">USD</span>
                 </p>
                 <span className={clsx("mt-6 block h-px w-12", tier.featured ? "bg-gold" : "bg-gold/60")} aria-hidden="true" />
                 <ul className="mt-6 space-y-3.5 text-[1.0625rem] leading-snug">

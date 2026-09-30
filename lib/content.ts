@@ -52,7 +52,7 @@ export type Tier = {
   benefits: string[];
 };
 
-// Ordered low to high; Couture is featured. Prices are in USD.
+// Ordered low to high; Couture is featured.
 // "___" in a benefit renders as a fill-in blank on the partners page.
 export const TIERS: Tier[] = [
   {
