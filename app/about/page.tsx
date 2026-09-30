@@ -117,7 +117,7 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-px bg-gold/40 md:grid-cols-2">
             <div className="flex flex-col items-start gap-6 bg-purple py-8 md:pr-12">
               <p className="max-w-[36ch] text-[1.3rem] leading-snug">{ABOUT.join.designers}</p>
-              <Button href="/apply" variant="gold-outline">
+              <Button href="/apply/form?type=designer" variant="gold-outline">
                 Apply Now
               </Button>
             </div>
