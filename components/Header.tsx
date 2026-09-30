@@ -10,6 +10,7 @@ import { clsx } from "@/lib/clsx";
 
 const NAV = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/partners", label: "Partners" },
   { href: "/apply", label: "Apply" },
 ] as const;

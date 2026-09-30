@@ -22,7 +22,7 @@ export default async function ApplicationPage({ searchParams }: PageProps<"/appl
   return (
     <>
       <section className="bg-ink text-white">
-        <div className="mx-auto max-w-[760px] px-5 pb-12 pt-14 sm:px-8 sm:pt-16">
+        <div data-reveal="stagger" className="mx-auto max-w-[760px] px-5 pb-12 pt-14 sm:px-8 sm:pt-16">
           <p className="caps-sm text-gold">KIFF 2027</p>
           <h1 className="mt-3 font-serif text-[clamp(3rem,8vw,4.75rem)] font-light leading-[0.95]">Application</h1>
           <DiamondRule className="mt-6 w-56" lineClassName="bg-gold/70" />

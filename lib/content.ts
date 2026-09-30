@@ -138,3 +138,25 @@ export const CONFIRMATION_EMAIL = {
   subject: "We received your KIFF application",
   body: "Thank you for applying to the Kigali International Fashion Festival, March 8-14, 2027. Our team will review your application and follow up. Questions? Contact hello@kigalifashionfestival.com.",
 };
+
+// About page copy, final from the KIFF team.
+export const ABOUT = {
+  headline: "A Week of African Designers Shaping the World's Fashion",
+  intro:
+    "The Kigali International Fashion Festival (KIFF) is a week-long celebration of design, creativity and enterprise, held in Kigali, Rwanda, March 8–14, 2027. KIFF brings together designers, makers, buyers and fashion lovers to showcase the talent coming out of Africa and connect it to new markets.",
+  culture:
+    "KIFF exists to promote African culture through fashion and to fuel the growth of the designers who carry it forward. Every collection tells a story of heritage, craftsmanship and identity, and KIFF puts those stories on a global stage. Beyond the runway, the festival opens doors to new customers, partners and markets, helping designers turn creative talent into lasting, thriving businesses.",
+  expect: [
+    "Runway shows featuring established and emerging designers.",
+    "A marketplace where guests can shop directly from designers.",
+    "Networking with buyers, retailers and partners looking for the next great African brand.",
+  ] as const,
+  whyKigali:
+    "Kigali is one of Africa's most dynamic cities: clean, safe, welcoming and growing fast as a hub for creativity and business. It's the natural home for a festival built on connection.",
+  presentedBy:
+    "KIFF is presented by 1819twenty, a platform that brings African fashion brands to customers in the United States and beyond. Participating designers can choose to sell through 1819twenty, extending their reach well past festival week.",
+  join: {
+    designers: "Designers: applications are open through February 1, 2027.",
+    partners: "Partners and sponsors: help us build something lasting.",
+  },
+};

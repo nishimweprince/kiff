@@ -3,6 +3,8 @@ import { Cormorant_Garamond } from "next/font/google";
 import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { SITE_URL } from "@/lib/config";
 import { EVENT } from "@/lib/content";
 import "./globals.css";
@@ -45,9 +47,16 @@ export const viewport: Viewport = {
   themeColor: "#1e1a1d",
 };
 
+// Runs before first paint so scroll-reveal content starts hidden instead of flashing.
+// If the page never hydrates (ScrollReveal adds reveal-live), everything is shown again.
+const revealScript = `(function(){var d=document.documentElement;if(!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("reveal-ready");setTimeout(function(){if(!d.classList.contains("reveal-live"))d.classList.remove("reveal-ready")},3000)}})()`;
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${avantGarde.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${avantGarde.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: revealScript }} />
+      </head>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"
@@ -60,6 +69,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
         </main>
         <Footer />
+        <SmoothScroll />
+        <ScrollReveal />
       </body>
     </html>
   );

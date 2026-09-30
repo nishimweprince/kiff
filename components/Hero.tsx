@@ -64,7 +64,7 @@ export function Hero({
 /** Page title block used on Partners and Apply. */
 export function HeroTitle({ title, children }: { title: string; children?: React.ReactNode }) {
   return (
-    <div className="flex max-w-xl flex-col justify-end pb-14 pt-32 sm:pb-20">
+    <div data-reveal="stagger" className="flex max-w-xl flex-col justify-end pb-14 pt-32 sm:pb-20">
       <h1 className="font-serif text-[clamp(4rem,11vw,7.5rem)] font-light leading-[0.9] tracking-[-0.015em]">
         {title}
       </h1>

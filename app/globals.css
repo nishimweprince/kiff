@@ -160,6 +160,55 @@
   }
 }
 
+/* Lenis drives the scroll; native smooth scrolling would fight it. */
+html.lenis {
+  scroll-behavior: auto;
+}
+
+/*
+ * Scroll reveals, set with data-reveal:
+ *   rise    text lifts into place
+ *   unveil  a photo drops in like a curtain while the image settles from a slight zoom
+ *   stagger each child rises in turn (50ms apart), a runway line-up
+ * Hidden states only apply under html.reveal-ready (see the layout script), so no-JS
+ * and reduced-motion visitors always see everything. Animated elements must not carry
+ * their own transition utilities: these rules would replace them.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal="rise"],
+  [data-reveal="stagger"] > * {
+    transition:
+      opacity 0.55s var(--ease-couture),
+      transform 0.55s var(--ease-couture);
+  }
+  .reveal-ready [data-reveal="rise"]:not([data-revealed]),
+  .reveal-ready [data-reveal="stagger"]:not([data-revealed]) > * {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  [data-reveal="stagger"] > :nth-child(2) { transition-delay: 50ms; }
+  [data-reveal="stagger"] > :nth-child(3) { transition-delay: 100ms; }
+  [data-reveal="stagger"] > :nth-child(4) { transition-delay: 150ms; }
+  [data-reveal="stagger"] > :nth-child(5) { transition-delay: 200ms; }
+  [data-reveal="stagger"] > :nth-child(6) { transition-delay: 250ms; }
+  [data-reveal="stagger"] > :nth-child(7) { transition-delay: 300ms; }
+  [data-reveal="stagger"] > :nth-child(n + 8) { transition-delay: 350ms; }
+
+  [data-reveal="unveil"] {
+    transition: clip-path 0.8s var(--ease-couture);
+  }
+  [data-reveal="unveil"] img {
+    transition: transform 1s var(--ease-couture);
+  }
+  .reveal-ready [data-reveal="unveil"]:not([data-revealed]) {
+    clip-path: inset(0 0 100% 0);
+  }
+  .reveal-ready [data-reveal="unveil"]:not([data-revealed]) img {
+    transform: scale(1.08);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
