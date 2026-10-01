@@ -47,15 +47,27 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gold/25 bg-ivory">
       <div className="mx-auto flex h-[4.5rem] max-w-[1320px] items-center gap-4 px-5 sm:h-20 sm:px-8 lg:px-12">
-        <Link href="/" aria-label="KIFF home" className="shrink-0">
+        {/* The badge's own lettering is too fine at header size, so the name is set beside it.
+            Hidden at md, where the full nav needs the room. */}
+        <Link href="/" aria-label="KIFF home" className="flex shrink-0 items-center gap-3">
           <Image
-            src="/images/brand/kiff-mark.png"
-            alt="KIFF"
-            width={451}
-            height={234}
+            src="/images/brand/kiff-badge-sm.png"
+            alt=""
+            width={256}
+            height={256}
             priority
-            className="h-10 w-auto sm:h-12"
+            className="size-12 sm:size-14"
           />
+          <span className="hidden flex-col sm:flex md:hidden lg:flex" aria-hidden="true">
+            <span className="font-serif text-[1.65rem] font-semibold leading-none tracking-[0.06em] text-gold-deep">
+              KIFF
+            </span>
+            <span className="caps-sm mt-1 text-[0.5625rem] leading-[1.5] text-ink/75">
+              Kigali International
+              <br />
+              Fashion Festival
+            </span>
+          </span>
         </Link>
 
         <nav aria-label="Main" className="ml-auto hidden items-center gap-9 md:flex">

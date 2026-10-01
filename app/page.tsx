@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { LuCalendarDays as CalendarDays, LuChevronDown as ChevronDown } from "react-icons/lu";
 import { Hero } from "@/components/Hero";
+import { Watermark } from "@/components/Watermark";
 import { Button } from "@/components/Button";
 import { DiamondRule } from "@/components/DiamondRule";
 import { Brand1819 } from "@/components/Brand1819";
@@ -46,13 +47,13 @@ export default function Home() {
         <div className="flex max-w-[34rem] flex-col justify-center pb-[clamp(4.5rem,10svh,7rem)] pt-[clamp(1.5rem,5svh,4rem)]">
           <h1 className="sr-only">{EVENT.name}</h1>
           <Image
-            src="/images/brand/kiff-logo.png"
+            src="/images/brand/kiff-badge.png"
             alt=""
-            width={1200}
-            height={769}
+            width={1000}
+            height={1000}
             priority
-            sizes="(min-width: 640px) 416px, 80vw"
-            className="hero-enter-logo -ml-[3%] w-[min(88%,26rem,32svh)]"
+            sizes="(min-width: 640px) 320px, 70vw"
+            className="hero-enter-logo w-[min(70%,20rem,30svh)]"
           />
           <p className="hero-enter-tagline mt-[clamp(1rem,3svh,2rem)] font-serif text-[clamp(2.3rem,min(5vw,5.5svh),3.6rem)] font-normal italic leading-[1.04] text-gold">
             Where African design
@@ -121,29 +122,32 @@ export default function Home() {
               style={{ objectPosition: "50% 30%" }}
             />
           </div>
-          <div data-reveal="stagger" className="flex flex-col items-center justify-center px-6 py-16 text-center sm:px-12 md:py-20 lg:px-20">
-            <Image src="/images/brand/kiff-mark.png" alt="" width={451} height={234} className="w-48 sm:w-56" />
-            <h2 id="about-title" className="caps mt-7 text-base leading-[1.6] text-ink sm:text-lg">
-              Kigali International
-              <br />
-              Fashion Festival
-            </h2>
-            <div className="mt-4 flex w-full max-w-xs items-center gap-4">
-              <span className="h-px flex-1 bg-gold/70" aria-hidden="true" />
-              <p className="caps-sm whitespace-nowrap text-gold-deep">
-                Presented by <Brand1819>1819twenty</Brand1819>
-              </p>
-              <span className="h-px flex-1 bg-gold/70" aria-hidden="true" />
+          <div className="relative isolate overflow-hidden">
+            <Watermark tone="ivory" />
+            <div data-reveal="stagger" className="flex h-full flex-col items-center justify-center px-6 py-16 text-center sm:px-12 md:py-20 lg:px-20">
+              <Image src="/images/brand/kiff-badge.png" alt="" width={1000} height={1000} sizes="192px" className="w-40 sm:w-48" />
+              <h2 id="about-title" className="caps mt-7 text-base leading-[1.6] text-ink sm:text-lg">
+                Kigali International
+                <br />
+                Fashion Festival
+              </h2>
+              <div className="mt-4 flex w-full max-w-xs items-center gap-4">
+                <span className="h-px flex-1 bg-gold/70" aria-hidden="true" />
+                <p className="caps-sm whitespace-nowrap text-gold-deep">
+                  Presented by <Brand1819>1819twenty</Brand1819>
+                </p>
+                <span className="h-px flex-1 bg-gold/70" aria-hidden="true" />
+              </div>
+              <p className="prose-serif mt-9 text-ink/90">{HOME.about}</p>
+              <p className="mt-6 font-serif text-[1.35rem] italic text-gold-deep">{HOME.openTo}</p>
             </div>
-            <p className="prose-serif mt-9 text-ink/90">{HOME.about}</p>
-            <p className="mt-6 font-serif text-[1.35rem] italic text-gold-deep">{HOME.openTo}</p>
           </div>
         </div>
       </section>
 
       <section aria-labelledby="cta-title" className="bg-purple text-white">
         <div data-reveal="stagger" className="mx-auto flex max-w-[1320px] flex-col items-center px-5 py-16 text-center sm:py-20">
-          <Image src="/images/brand/kiff-horns.png" alt="" width={400} height={371} className="w-14" />
+          <Image src="/images/brand/kiff-badge-sm.png" alt="" width={256} height={256} className="size-16" />
           <h2 id="cta-title" className="mt-5 font-serif text-[clamp(2.1rem,4.5vw,3.25rem)] font-light leading-tight">
             {HOME.cta}
           </h2>

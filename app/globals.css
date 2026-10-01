@@ -52,6 +52,11 @@
   height: 8px;
 }
 
+/* The badge's gorilla and horns as a fill-coloured silhouette (see components/Watermark). */
+@utility watermark {
+  mask: url("/images/brand/kiff-watermark.png") center / contain no-repeat;
+}
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;

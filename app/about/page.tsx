@@ -3,6 +3,7 @@ import Image from "next/image";
 import { PiDressLight, PiHandshakeLight, PiShoppingBagLight } from "react-icons/pi";
 import { Button } from "@/components/Button";
 import { DiamondRule } from "@/components/DiamondRule";
+import { Watermark } from "@/components/Watermark";
 import { With1819 } from "@/components/Brand1819";
 import { ABOUT } from "@/lib/content";
 import { SOCIAL } from "@/lib/config";
@@ -52,29 +53,33 @@ export default function AboutPage() {
 
       <div className="imigongo bg-ink" aria-hidden="true" />
 
-      <section data-reveal="stagger" aria-labelledby="culture" className={`${container} grid gap-6 pb-14 pt-16 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:pt-24`}>
-        <h2 id="culture" className={h2}>
-          Culture and growth
-        </h2>
-        <p className="prose-serif text-ink/90">{ABOUT.culture}</p>
-      </section>
+      <div className="relative isolate overflow-hidden">
+        <Watermark tone="ivory" side="left" />
 
-      <section aria-labelledby="expect" className={`${container} pb-20 pt-6 md:pb-28`}>
-        <h2 id="expect" data-reveal="rise" className={h2}>
-          What to expect
-        </h2>
-        <ul data-reveal="stagger" className="mt-10 grid gap-10 border-t border-gold/40 pt-10 md:grid-cols-3 md:gap-12">
-          {ABOUT.expect.map((item, i) => {
-            const Icon = expectIcons[i];
-            return (
-              <li key={item} className="flex flex-col gap-4">
-                <Icon size={40} className="text-gold" aria-hidden="true" />
-                <p className="max-w-[34ch] text-[1.25rem] leading-snug text-ink">{item}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+        <section data-reveal="stagger" aria-labelledby="culture" className={`${container} grid gap-6 pb-14 pt-16 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:pt-24`}>
+          <h2 id="culture" className={h2}>
+            Culture and growth
+          </h2>
+          <p className="prose-serif text-ink/90">{ABOUT.culture}</p>
+        </section>
+
+        <section aria-labelledby="expect" className={`${container} pb-20 pt-6 md:pb-28`}>
+          <h2 id="expect" data-reveal="rise" className={h2}>
+            What to expect
+          </h2>
+          <ul data-reveal="stagger" className="mt-10 grid gap-10 border-t border-gold/40 pt-10 md:grid-cols-3 md:gap-12">
+            {ABOUT.expect.map((item, i) => {
+              const Icon = expectIcons[i];
+              return (
+                <li key={item} className="flex flex-col gap-4">
+                  <Icon size={40} className="text-gold" aria-hidden="true" />
+                  <p className="max-w-[34ch] text-[1.25rem] leading-snug text-ink">{item}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      </div>
 
       <section aria-labelledby="kigali" className="bg-ink text-white">
         <div className="grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
@@ -89,28 +94,34 @@ export default function AboutPage() {
               style={{ objectPosition: "50% 65%" }}
             />
           </div>
-          <div data-reveal="stagger" className="flex flex-col justify-center px-5 py-16 sm:px-12 md:py-20 lg:px-20">
-            <h2 id="kigali" className={h2}>
-              Why Kigali
-            </h2>
-            <DiamondRule className="mt-6 w-40" lineClassName="bg-gold/70" />
-            <p className="prose-serif mt-7 text-white/85">{ABOUT.whyKigali}</p>
+          <div className="relative isolate overflow-hidden">
+            <Watermark tone="ink" className="w-[130%] sm:w-[90%] md:w-[85%]" />
+            <div data-reveal="stagger" className="flex h-full flex-col justify-center px-5 py-16 sm:px-12 md:py-20 lg:px-20">
+              <h2 id="kigali" className={h2}>
+                Why Kigali
+              </h2>
+              <DiamondRule className="mt-6 w-40" lineClassName="bg-gold/70" />
+              <p className="prose-serif mt-7 text-white/85">{ABOUT.whyKigali}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section data-reveal="stagger" aria-labelledby="presented" className={`${container} grid gap-6 py-20 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:py-24`}>
-        <h2 id="presented" className={h2}>
-          Presented by 1819twenty
-        </h2>
-        <p className="prose-serif text-ink/90">
-          <With1819 text={ABOUT.presentedBy} className="decoration-gold/60" />
-        </p>
-      </section>
+      <div className="relative isolate overflow-hidden">
+        <Watermark tone="ivory" />
+        <section data-reveal="stagger" aria-labelledby="presented" className={`${container} grid gap-6 py-20 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:py-24`}>
+          <h2 id="presented" className={h2}>
+            Presented by 1819twenty
+          </h2>
+          <p className="prose-serif text-ink/90">
+            <With1819 text={ABOUT.presentedBy} className="decoration-gold/60" />
+          </p>
+        </section>
+      </div>
 
       <section aria-labelledby="join" className="bg-purple text-white">
         <div data-reveal="stagger" className={`${container} py-16 sm:py-20`}>
-          <Image src="/images/brand/kiff-horns.png" alt="" width={400} height={371} className="w-12" />
+          <Image src="/images/brand/kiff-badge-sm.png" alt="" width={256} height={256} className="size-16" />
           <h2 id="join" className={`${h2} mt-5`}>
             Join us
           </h2>
