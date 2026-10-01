@@ -13,6 +13,7 @@ import {
 } from "react-icons/lu";
 import { PiDressLight, PiHandshakeLight, PiShoppingBagLight } from "react-icons/pi";
 import { Hero, HeroTitle } from "@/components/Hero";
+import { Watermark } from "@/components/Watermark";
 import { Button } from "@/components/Button";
 import { DiamondRule } from "@/components/DiamondRule";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -71,89 +72,93 @@ export default function PartnersPage() {
         </HeroTitle>
       </Hero>
 
-      <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-        <p data-reveal="rise" className="prose-serif mx-auto pb-4 pt-14 text-center text-[1.3rem] sm:pt-16">{PARTNERS_INTRO}</p>
+      <div className="relative isolate overflow-hidden">
+        <Watermark tone="ivory" side="left" align="top" />
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <p data-reveal="rise" className="prose-serif mx-auto pb-4 pt-14 text-center text-[1.3rem] sm:pt-16">{PARTNERS_INTRO}</p>
 
-        <section aria-labelledby="ways" className="pt-10">
-          <SectionLabel id="ways" reveal>Ways to partner</SectionLabel>
-          <ul data-reveal="stagger" className="mt-9 grid gap-4 md:grid-cols-3 md:gap-5">
-            {WAYS_TO_PARTNER.map((way) => {
-              const Icon = wayIcons[way.type];
-              return (
-                <li key={way.type} className="flex flex-col items-center border border-gold/40 px-7 pb-9 pt-8 text-center">
-                  <Icon size={40} className="text-gold" aria-hidden="true" />
-                  <h3 className="mt-4 font-serif text-[1.75rem] font-medium leading-tight">{way.title}</h3>
-                  <p className="mt-3 max-w-[30ch] text-[1.0625rem] leading-relaxed text-mute">{way.body}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-
-        <section aria-labelledby="tiers" className="pt-20">
-          <SectionLabel id="tiers" reveal>Sponsorship opportunities</SectionLabel>
-          <ul data-reveal="stagger" className="mt-9 grid items-stretch gap-4 md:mt-14 md:grid-cols-3 md:gap-0">
-            {TIERS.map((tier) => (
-              <li
-                key={tier.id}
-                className={clsx(
-                  "flex flex-col px-7 pb-10 pt-8 text-white sm:px-9",
-                  tier.featured
-                    ? "bg-purple ring-1 ring-gold/60 md:-my-5 md:py-12 md:z-10"
-                    : "bg-ink",
-                )}
-              >
-                <h3 className="caps text-[0.8125rem] text-white/90">
-                  {tier.name}
-                </h3>
-                <p className="mt-3 font-serif text-[3.25rem] font-light leading-none tracking-tight [font-variant-numeric:lining-nums]">
-                  {tier.price}
-                </p>
-                <span className={clsx("mt-6 block h-px w-12", tier.featured ? "bg-gold" : "bg-gold/60")} aria-hidden="true" />
-                <ul className="mt-6 space-y-3.5 text-[1.0625rem] leading-snug">
-                  {tier.benefits.map((b) => (
-                    <li key={b} className="flex gap-3">
-                      <Check size={17} strokeWidth={1.5} className="mt-[0.2em] shrink-0 text-gold" aria-hidden="true" />
-                      <span className="text-white/90">{renderBenefit(b)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section data-reveal="rise" aria-labelledby="studio" className="mt-16 bg-ink text-white md:mt-20">
-          <div className="grid gap-10 px-7 py-10 sm:px-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-14 md:py-12 lg:px-14">
-            <div>
-              <h2 id="studio" className="caps text-[0.8125rem]">
-                {STUDIO_PARTNER.title} <span className="text-gold">({STUDIO_PARTNER.subtitle})</span>
-              </h2>
-              <p className="mt-5 max-w-[52ch] text-[1.125rem] leading-relaxed text-white/85">{STUDIO_PARTNER.body}</p>
-            </div>
-            <ul className="grid grid-cols-2 gap-px self-center bg-gold/25 sm:grid-cols-4 md:grid-cols-2 lg:grid-cols-4">
-              {STUDIO_PARTNER.services.map((service) => {
-                const Icon = serviceIcons[service];
+          <section aria-labelledby="ways" className="pt-10">
+            <SectionLabel id="ways" reveal>Ways to partner</SectionLabel>
+            <ul data-reveal="stagger" className="mt-9 grid gap-4 md:grid-cols-3 md:gap-5">
+              {WAYS_TO_PARTNER.map((way) => {
+                const Icon = wayIcons[way.type];
                 return (
-                  <li key={service} className="flex flex-col items-center gap-3 bg-ink px-2 py-6 text-center">
-                    <Icon size={28} strokeWidth={1} className="text-gold" aria-hidden="true" />
-                    <span className="caps-sm text-[0.625rem] leading-[1.6] text-white/85">{service}</span>
+                  <li key={way.type} className="flex flex-col items-center border border-gold/40 px-7 pb-9 pt-8 text-center">
+                    <Icon size={40} className="text-gold" aria-hidden="true" />
+                    <h3 className="mt-4 font-serif text-[1.75rem] font-medium leading-tight">{way.title}</h3>
+                    <p className="mt-3 max-w-[30ch] text-[1.0625rem] leading-relaxed text-mute">{way.body}</p>
                   </li>
                 );
               })}
-              {/* Seven services; the mark fills the eighth cell so the grid closes evenly. */}
-              <li aria-hidden="true" className="grid place-items-center bg-ink px-2 py-6">
-                <Image src="/images/brand/kiff-horns.png" alt="" width={400} height={371} className="w-9 opacity-40" />
-              </li>
             </ul>
-          </div>
-        </section>
+          </section>
 
-        <div data-reveal="rise" className="flex justify-center pb-20 pt-12 sm:pb-24">
-          <Button href="/apply/form?type=sponsor" arrow>
-            Become a Partner
-          </Button>
-        </div>
+          <section aria-labelledby="tiers" className="pt-20">
+            <SectionLabel id="tiers" reveal>Sponsorship opportunities</SectionLabel>
+            <ul data-reveal="stagger" className="mt-9 grid items-stretch gap-4 md:mt-14 md:grid-cols-3 md:gap-0">
+              {TIERS.map((tier) => (
+                <li
+                  key={tier.id}
+                  className={clsx(
+                    "flex flex-col px-7 pb-10 pt-8 text-white sm:px-9",
+                    tier.featured
+                      ? "bg-purple ring-1 ring-gold/60 md:-my-5 md:py-12 md:z-10"
+                      : "bg-ink",
+                  )}
+                >
+                  <h3 className="caps text-[0.8125rem] text-white/90">
+                    {tier.name}
+                  </h3>
+                  <p className="mt-3 font-serif text-[3.25rem] font-light leading-none tracking-tight [font-variant-numeric:lining-nums]">
+                    {tier.price}
+                  </p>
+                  <span className={clsx("mt-6 block h-px w-12", tier.featured ? "bg-gold" : "bg-gold/60")} aria-hidden="true" />
+                  <ul className="mt-6 space-y-3.5 text-[1.0625rem] leading-snug">
+                    {tier.benefits.map((b) => (
+                      <li key={b} className="flex gap-3">
+                        <Check size={17} strokeWidth={1.5} className="mt-[0.2em] shrink-0 text-gold" aria-hidden="true" />
+                        <span className="text-white/90">{renderBenefit(b)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section data-reveal="rise" aria-labelledby="studio" className="relative isolate mt-16 overflow-hidden bg-ink text-white md:mt-20">
+            <Watermark tone="ink" />
+            <div className="grid gap-10 px-7 py-10 sm:px-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-14 md:py-12 lg:px-14">
+              <div>
+                <h2 id="studio" className="caps text-[0.8125rem]">
+                  {STUDIO_PARTNER.title} <span className="text-gold">({STUDIO_PARTNER.subtitle})</span>
+                </h2>
+                <p className="mt-5 max-w-[52ch] text-[1.125rem] leading-relaxed text-white/85">{STUDIO_PARTNER.body}</p>
+              </div>
+              <ul className="grid grid-cols-2 gap-px self-center bg-gold/25 sm:grid-cols-4 md:grid-cols-2 lg:grid-cols-4">
+                {STUDIO_PARTNER.services.map((service) => {
+                  const Icon = serviceIcons[service];
+                  return (
+                    <li key={service} className="flex flex-col items-center gap-3 bg-ink px-2 py-6 text-center">
+                      <Icon size={28} strokeWidth={1} className="text-gold" aria-hidden="true" />
+                      <span className="caps-sm text-[0.625rem] leading-[1.6] text-white/85">{service}</span>
+                    </li>
+                  );
+                })}
+                {/* Seven services; the mark fills the eighth cell so the grid closes evenly. */}
+                <li aria-hidden="true" className="grid place-items-center bg-ink px-2 py-6">
+                  <Image src="/images/brand/kiff-badge-sm.png" alt="" width={256} height={256} className="size-10 opacity-60" />
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <div data-reveal="rise" className="flex justify-center pb-20 pt-12 sm:pb-24">
+            <Button href="/apply/form?type=sponsor" arrow>
+              Become a Partner
+            </Button>
+          </div>
+      </div>
       </div>
     </>
   );

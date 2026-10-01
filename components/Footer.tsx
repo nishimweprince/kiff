@@ -15,7 +15,7 @@ export function Footer() {
     <footer className="bg-ink text-white">
       <div className="mx-auto flex max-w-[1320px] flex-col gap-8 px-5 py-10 sm:px-8 md:flex-row md:items-center md:gap-10 lg:px-12">
         <Link href="/" className="flex items-center gap-4" aria-label="Kigali International Fashion Festival, home">
-          <Image src="/images/brand/kiff-mark.png" alt="" width={451} height={234} className="h-11 w-auto" />
+          <Image src="/images/brand/kiff-badge-sm.png" alt="" width={256} height={256} className="size-14" />
           <span className="h-9 w-px bg-gold/60" aria-hidden="true" />
           <span className="caps-sm leading-[1.6] text-gold">
             Kigali International
