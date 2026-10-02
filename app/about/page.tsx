@@ -110,29 +110,27 @@ export default function AboutPage() {
       <div className="relative isolate overflow-hidden">
         <Watermark tone="ivory" />
 
-        {/* Set like a festival programme's credits page: no portraits, the names carry it. */}
-        {/* The heading holds the left column alone; the roster nests under the intro, so names read as entries, not headings. */}
-        <section
-          aria-labelledby="team"
-          className={`${container} grid gap-6 pt-20 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:pt-24`}
-        >
-          <h2 id="team" data-reveal="rise" className={h2}>
-            Meet the team
-          </h2>
-          <div>
-            <p data-reveal="rise" className="prose-serif text-ink/90">
-              {ABOUT.team.intro}
-            </p>
-            <ul data-reveal="stagger" className="mt-12 grid gap-x-12 gap-y-12 sm:grid-cols-2">
-              {ABOUT.team.members.map((m) => (
-                <li key={m.name} className="border-t border-gold/40 pt-6">
-                  <h3 className="font-serif text-[1.75rem] font-normal italic leading-[1.1] text-purple">{m.name}</h3>
-                  <p className="caps-sm mt-2.5 leading-[1.7] text-gold-deep">{m.role}</p>
-                  <p className="mt-4 max-w-[46ch] text-[1.0625rem] leading-[1.65] text-ink/80">{m.bio}</p>
-                </li>
-              ))}
-            </ul>
+        {/* Set like a festival programme's credits page: no portraits, the names carry it.
+            The roster spans the full width beneath the heading row, each entry centered under its diamond rule. */}
+        <section aria-labelledby="team" className={`${container} pt-20 md:pt-24`}>
+          <div data-reveal="stagger" className="grid gap-6 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14">
+            <h2 id="team" className={h2}>
+              Meet the team
+            </h2>
+            <p className="prose-serif text-ink/90">{ABOUT.team.intro}</p>
           </div>
+          <ul data-reveal="stagger" className="mt-14 grid gap-x-16 gap-y-14 md:mt-20 md:grid-cols-2 md:gap-y-20">
+            {ABOUT.team.members.map((m) => (
+              <li key={m.name} className="flex flex-col items-center text-center">
+                <DiamondRule className="w-full" lineClassName="bg-gold/40" />
+                <h3 className="mt-8 font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] font-light italic leading-[1.05] text-purple">
+                  {m.name}
+                </h3>
+                <p className="caps-sm mt-4 leading-[1.7] text-gold-deep">{m.role}</p>
+                <p className="mt-5 max-w-[46ch] text-[1.0625rem] leading-[1.65] text-ink/80">{m.bio}</p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section data-reveal="stagger" aria-labelledby="presented" className={`${container} grid gap-6 py-20 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-14 md:py-24`}>
