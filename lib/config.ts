@@ -6,7 +6,6 @@ export const SOCIAL = {
   instagram: "https://www.instagram.com/kiffkigali/",
   facebook: "https://www.facebook.com/share/1LSCgown8G/",
   tiktok: "https://www.tiktok.com/@kigali.intl.fashio",
-  hashtag: "https://www.instagram.com/explore/tags/kiff2027/",
 } as const;
 
 export const HASHTAGS = ["#KigaliFashionFestival", "#KIFF2027", "#1819twenty"] as const;

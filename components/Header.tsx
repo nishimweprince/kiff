@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LuMenu as Menu, LuX as X } from "react-icons/lu";
-import { SOCIAL } from "@/lib/config";
 import { clsx } from "@/lib/clsx";
 
 const NAV = [
@@ -90,17 +89,6 @@ export function Header() {
               </Link>
             );
           })}
-          <a
-            href={SOCIAL.hashtag}
-            target="_blank"
-            rel="noopener"
-            className={clsx(
-              "caps-sm py-2 text-ink transition-colors after:bg-ink/40 hover:text-gold-deep hover:after:scale-x-100",
-              sweep,
-            )}
-          >
-            #KIFF2027
-          </a>
         </nav>
 
         <Link
@@ -153,11 +141,6 @@ export function Header() {
                 </li>
               );
             })}
-            <li className="border-b border-gold/25">
-              <a href={SOCIAL.hashtag} target="_blank" rel="noopener" className="block py-5 font-serif text-4xl font-light text-ink">
-                #KIFF2027
-              </a>
-            </li>
           </ul>
         </nav>
       )}

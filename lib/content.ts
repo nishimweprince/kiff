@@ -153,6 +153,32 @@ export const ABOUT = {
   ] as const,
   whyKigali:
     "Kigali is one of Africa's most dynamic cities: clean, safe, welcoming and growing fast as a hub for creativity and business. It's the natural home for a festival built on connection.",
+  team: {
+    intro:
+      "The Kigali International Fashion Festival is brought to life by a team dedicated to celebrating African design, elevating creative talent, and connecting Kigali to the global fashion stage.",
+    members: [
+      {
+        name: "Stevon Sampson",
+        role: "Founder & President",
+        bio: "Stevon leads KIFF's vision and strategic direction, guiding the festival's growth and its mission to showcase designers from Rwanda, across Africa, and beyond during International Women's Day week.",
+      },
+      {
+        name: "Yvette Mutoni",
+        role: "Talent Director & Operations Manager",
+        bio: "Yvette oversees designer and talent relations and keeps the festival running smoothly, from applications and scheduling to on-site coordination.",
+      },
+      {
+        name: "Maurice Niyigena",
+        role: "Fashion Curator & Managing Director",
+        bio: "Maurice shapes the creative heart of KIFF, curating the designers and collections featured each year and managing the festival's day-to-day direction.",
+      },
+      {
+        name: "David Niyomukiza",
+        role: "Media Director",
+        bio: "David leads KIFF's media, content, and storytelling, making sure the festival's designers and moments reach audiences in Kigali and around the world.",
+      },
+    ],
+  },
   presentedBy:
     "KIFF is presented by 1819twenty, a platform that brings African fashion brands to customers in the United States and beyond. Participating designers can choose to sell through 1819twenty, extending their reach well past festival week.",
   join: {
