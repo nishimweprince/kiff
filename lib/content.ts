@@ -163,7 +163,7 @@ export const ABOUT = {
         bio: "Stevon leads KIFF's vision and strategic direction, guiding the festival's growth and its mission to showcase designers from Rwanda, across Africa, and beyond during International Women's Day week.",
       },
       {
-        name: "Yvette Mutoni",
+        name: "Yvette Umutoni (Perroni)",
         role: "Talent Director & Operations Manager",
         bio: "Yvette oversees designer and talent relations and keeps the festival running smoothly, from applications and scheduling to on-site coordination.",
       },
@@ -173,7 +173,7 @@ export const ABOUT = {
         bio: "Maurice shapes the creative heart of KIFF, curating the designers and collections featured each year and managing the festival's day-to-day direction.",
       },
       {
-        name: "David Niyomukiza",
+        name: "David Niyonshuti",
         role: "Media Director",
         bio: "David leads KIFF's media, content, and storytelling, making sure the festival's designers and moments reach audiences in Kigali and around the world.",
       },
